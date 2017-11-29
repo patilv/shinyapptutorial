@@ -1,7 +1,7 @@
 ---
 title: "Introduction to shiny apps "
 author:  "Vivek H. Patil <br> Professor of Marketing, Gonzaga University"
-date: "28 November, 2017"
+date: "29 November, 2017"
 output:
   ioslides_presentation:
     smaller: yes
@@ -71,7 +71,7 @@ summary(iris)
 ```{r}
 library(ggplot2)
 ggplot(iris,aes(x=Sepal.Length,y=Sepal.Width,color=Species))+geom_point()
-````
+```
 
 
 ## Plot 2 - Box plot
@@ -175,9 +175,9 @@ Source: [http://shiny.rstudio.com/tutorial/written-tutorial/lesson2/](http://shi
 
 
 ## The ui with no output
-Code of this intermediate app: [https://github.com/patilv/INRUG-ShinyUI](https://github.com/patilv/INRUG-ShinyUI)
+Code of this intermediate app: [https://github.com/patilv/shinyapptutorial/tree/master/shinyUI](https://github.com/patilv/shinyapptutorial/tree/master/shinyUI)
 
-<iframe src="https://patilv.shinyapps.io/INRUG-ShinyUI/"></iframe>
+<iframe src="https://patilv.shinyapps.io/shinyUI/"></iframe>
 
 
 ## server.R
@@ -243,10 +243,10 @@ output$boxplot=renderPlot(ggplot(dataset(),aes_string(x="Species",y=input$dvar))
 
 ## Putting it all together with some instructions and messages
 
-Code for final app: [https://github.com/patilv/INRUG-ShinyFinal](https://github.com/patilv/INRUG-ShinyFinal)
+Code for final app: [https://github.com/patilv/shinyapptutorial/tree/master/shinyApp](https://github.com/patilv/shinyapptutorial/tree/master/shinyApp)
 
-App in new window: [https://patilv.shinyapps.io/INRUG-ShinyFinal/](https://patilv.shinyapps.io/INRUG-ShinyFinal/)
-<iframe src="https://patilv.shinyapps.io/INRUG-ShinyFinal/"></iframe>
+App in new window: [https://patilv.shinyapps.io/shinyApp/](https://patilv.shinyapps.io/shinyApp/)
+<iframe src="https://patilv.shinyapps.io/shinyApp/"></iframe>
 
 
 ## Deploying/Sharing an Application
@@ -257,9 +257,10 @@ if {R and shiny available on computer}
 {
 
 * Two R files (or one, if a shiny markdown file)
-* runURL (from any web link to a zip file comprising the two R files)
-* runGist (Try: `shiny::runGist("460f7ee20def9a506714")`)
-* runGitHub (Try: `shiny::runGitHub("INRUG-ShinyFinal","patilv")`)
+* shiny::runURL (from any web link to a zip file comprising the two R files; Try: `shiny::runUrl("http://patilv.com/shinyapptutorial/shinyApp.zip")`)
+* runGist (Try: `shiny::runGist("0e8fee078f0fab4e2ead185d39dc362c")`)
+  * The Gist can be found at: [https://gist.github.com/patilv/0e8fee078f0fab4e2ead185d39dc362c](https://gist.github.com/patilv/0e8fee078f0fab4e2ead185d39dc362c)
+* runGitHub (Try: `shiny::runGitHub( "shinyApp", "patilv")`)
 
 }
 else
@@ -274,7 +275,9 @@ else
 * [http://shiny.rstudio.com/](http://shiny.rstudio.com/)
 * Sample apps I have worked on: [http://patilv.com/tags/#Shiny](http://patilv.com/tags/#Shiny)
 * [https://rstudio.github.io/leaflet/](https://rstudio.github.io/leaflet/)
-* Search on R-Bloggers: [http://www.r-bloggers.com/?s=shiny](http://www.r-bloggers.com/?s=shiny) 
+* Search on R-Bloggers: [http://www.r-bloggers.com](http://www.r-bloggers.com)
+* Dashboards can be created using `shinydashboard` ([https://rstudio.github.io/shinydashboard/](https://rstudio.github.io/shinydashboard/))
+
 
 
 
