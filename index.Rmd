@@ -1,7 +1,7 @@
 ---
 title: "Introduction to shiny apps "
 author:  "Vivek H. Patil <br> Professor of Marketing, Gonzaga University"
-date: "29 November, 2017"
+date: ""
 output:
   ioslides_presentation:
     smaller: yes
