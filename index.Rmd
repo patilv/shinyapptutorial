@@ -33,6 +33,7 @@ devtools::install_github("rstudio/shiny")
 
 ## Components of an application
 
+
 * Two files
 
   1. User-Interface file (ui.R) - inputs and display of output in a customizable layout
@@ -104,7 +105,7 @@ Off-the-shelf widgets for inputs: [http://shiny.rstudio.com/gallery/widget-galle
 
 ## Our Widgets
 
-* One "Select box" each for the x-variable and y-variable (for scatter plot), and one "Select box" for the dvariable (for distribution to study in box plot) - The options for each of the 4 select boxes will be the same, the four numeric variables
+* One "Select box" each for the x-variable and y-variable (for scatter plot), and one "Select box" for the dvariable (for distribution to study in box plot) - The options for each of the 3 select boxes will be the same, the four numeric variables
 * One "Slider range" for each of the four numeric variables - the minimum and maximum for each "Slider range" should be the minimum and maximum of the variable they are representing. Default state of each: The entire range (complete dataset)
 
 
@@ -199,7 +200,7 @@ Code of this intermediate app: [https://github.com/patilv/shinyapptutorial/tree/
 * Each of those sliders returns two values, the lower and upper bounds of the range
 
 ```{r eval=FALSE}
-dataset=reactive(iris[(iris$Sepal.Length>=input$Sepal.Length[1] & iris$Sepal.Length<=input$Sepal.Length[2]&
+dataset<-reactive(iris[(iris$Sepal.Length>=input$Sepal.Length[1] & iris$Sepal.Length<=input$Sepal.Length[2]&
                             iris$Sepal.Width>=input$Sepal.Width[1] & iris$Sepal.Width<=input$Sepal.Width[2]&
                                iris$Petal.Length>=input$Petal.Length[1] & iris$Petal.Length<=input$Petal.Length[2]&
                                   iris$Petal.Width>=input$Petal.Width[1] & iris$Petal.Width<=input$Petal.Width[2]),])
@@ -232,9 +233,9 @@ output$subsetdata <- renderDataTable(dataset(),options=list(pageLength=10)) # fo
   
 output$summary <- renderPrint(summary(dataset()))
   
-output$scatterplot=renderPlot(ggplot(dataset(),aes_string(x=input$xvar, y=input$yvar,color="Species"))+ geom_point()+ggtitle("Scatter Plot"))
+output$scatterplot <- renderPlot(ggplot(dataset(),aes_string(x=input$xvar, y=input$yvar,color="Species"))+ geom_point()+ggtitle("Scatter Plot"))
   
-output$boxplot=renderPlot(ggplot(dataset(),aes_string(x="Species",y=input$dvar))+ geom_boxplot()+ ggtitle("Box Plot"))
+output$boxplot <- renderPlot(ggplot(dataset(),aes_string(x="Species",y=input$dvar))+ geom_boxplot()+ ggtitle("Box Plot"))
 ```
 
 * Note how the reactive dataset is referred to as `dataset()`
@@ -251,14 +252,14 @@ App in new window: [https://patilv.shinyapps.io/shinyApp/](https://patilv.shinya
 
 ## Deploying/Sharing an Application
 
-Source: [http://shiny.rstudio.com/tutorial/lesson7/](http://shiny.rstudio.com/tutorial/lesson7/)
+Source: [https://shiny.rstudio.com/tutorial/written-tutorial/lesson7/](https://shiny.rstudio.com/tutorial/written-tutorial/lesson7/)
 
 if {R and shiny available on computer} 
 {
 
 * Two R files (or one, if a shiny markdown file)
 * shiny::runURL (from any web link to a zip file comprising the two R files; Try: `shiny::runUrl("http://patilv.com/shinyapptutorial/shinyApp.zip")`)
-* runGist (Try: `shiny::runGist("0e8fee078f0fab4e2ead185d39dc362c")`)
+* Anonymous way to post files online through GitHub without an account: runGist (Try: `shiny::runGist("0e8fee078f0fab4e2ead185d39dc362c")`)
   * The Gist can be found at: [https://gist.github.com/patilv/0e8fee078f0fab4e2ead185d39dc362c](https://gist.github.com/patilv/0e8fee078f0fab4e2ead185d39dc362c)
 * runGitHub (Try: `shiny::runGitHub( "shinyApp", "patilv")`)
 
@@ -274,7 +275,6 @@ else
 
 * [http://shiny.rstudio.com/](http://shiny.rstudio.com/)
 * Sample apps I have worked on: [http://patilv.com/tags/#Shiny](http://patilv.com/tags/#Shiny)
-* [https://rstudio.github.io/leaflet/](https://rstudio.github.io/leaflet/)
 * Search on R-Bloggers: [http://www.r-bloggers.com](http://www.r-bloggers.com)
 * Dashboards can be created using `shinydashboard` ([https://rstudio.github.io/shinydashboard/](https://rstudio.github.io/shinydashboard/))
 
